@@ -1,0 +1,32 @@
+import React, { useEffect, useState } from 'react'
+import { Card } from 'react-bootstrap'
+
+import pokeApi from '../../services/api'
+import imageUrl from '../../services/imageUrl'
+
+export default function PokemonCard({ pokemonData }) {
+    const [pokemon, setPokemon] = useState({})
+    const [type, setType] = useState('')
+
+    useEffect(() => {
+        pokeApi.get(`/pokemon/${pokemonData.name}`)
+            .then(response => {
+                let data = response.data               
+                setPokemon(data)
+                setType(data.types[0].type.name)
+            })
+    }, [type, pokemonData.name])
+
+    return (
+        <li >
+            <Card className={`m-2 card ${type}`} style={{ width: 230 }} >
+                <Card.Img className='img' variant='top' src={pokemon.id ? imageUrl(pokemon.id) : ''} />
+                <Card.Body>
+                    <Card.Title className='title'>
+                        #{pokemon.id} - {pokemon.name}
+                    </Card.Title>
+                </Card.Body>
+            </Card>
+        </li>
+    )
+}

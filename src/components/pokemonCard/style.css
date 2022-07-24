@@ -1,0 +1,21 @@
+.title {
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+
+.card::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 60%;
+    border-radius: 100%;
+    background-color: #fff;
+    opacity: .7;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+  }
+  
+  .img {
+    z-index: 2;
+  }
