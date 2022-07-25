@@ -11,6 +11,7 @@ export default function PokemonCard({ pokemonData }) {
     const [pokemon, setPokemon] = useState({})
     const [type, setType] = useState('')
 
+    // gets pokemon details
     useEffect(() => {
         pokeApi.get(`/pokemon/${pokemonData.name}`)
             .then(response => {
@@ -21,6 +22,7 @@ export default function PokemonCard({ pokemonData }) {
     }, [type, pokemonData.name])
 
     return (
+        // send details through route to avoid unecessary api calls
         <li onClick={() => { navigate('/details', { state: pokemon }) }}>
             <Card className={`m-2 card ${type}`} style={{ width: 230 }} >
                 <Card.Img className='img' variant='top' src={pokemon.id ? imageUrl(pokemon.id) : ''} />

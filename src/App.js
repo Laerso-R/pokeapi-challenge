@@ -6,6 +6,7 @@ import pokeApi from './services/api';
 
 
 function App() {
+  // control the offset when leaving main screen
   const off = parseInt(localStorage.getItem('offset')) ?? 0
 
   const [list, setList] = useState([])
@@ -13,7 +14,7 @@ function App() {
   const [offset, setOffset] = useState(off)
 
 
-
+  // lists the pokemons
   const getList = async () => {
 
     pokeApi.get('/pokemon?limit=20&offset=' + offset)

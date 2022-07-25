@@ -3,6 +3,7 @@ import App from "./App";
 import DetailsScreen from "./pages/details/DetailsScreen";
 import FavoritesScreen from "./pages/favorites/FavoritesScreen";
 
+// app routes
 export default function Router() {
     return (
         <BrowserRouter>

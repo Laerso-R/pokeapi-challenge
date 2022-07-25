@@ -16,6 +16,7 @@ export default function DetailsScreen() {
     const [favorite, setFavorite] = useState(false)
     const type = state.types[0].type.name
 
+    // get pokemon details
     const getDescriptions = () => {
         pokeApi.get('/pokemon-species/' + state.id)
             .then(response => {
@@ -26,6 +27,7 @@ export default function DetailsScreen() {
             })
     }
 
+    // checks if pokemon is one of the favorites
     const getFavorite = () => {
         let favorites = localStorage.getItem('favorites')
         favorites = favorites.split(',')
@@ -39,15 +41,15 @@ export default function DetailsScreen() {
         }
     }
 
+    // add pokemon to favorites list
     const addFavorite = () => {
         let favorites = localStorage.getItem('favorites') ?? ''
         let newFavorite = favorites + ',' + state.name
-
         localStorage.setItem('favorites', newFavorite)
-
         getFavorite()
     }
 
+    // remove pokemon to favorites list
     const removeFavorite = () => {
         var favorites = localStorage.getItem('favorites').replaceAll(',,', '').replaceAll('null,', '')
         favorites = favorites.split(',')
@@ -59,9 +61,7 @@ export default function DetailsScreen() {
                 newFavorite = newFavorite + ',' + favorite
             }
         }
-
         localStorage.setItem('favorites', newFavorite)
-
         getFavorite()
     }
 
@@ -77,6 +77,8 @@ export default function DetailsScreen() {
 
             <Container className='h-75'>
                 <Row className='h-100' >
+
+                    {/* Pokemon Image */}
                     <Col className='pokemon d-flex align-items-center' >
                         <Container>
                             <div className='d-flex justify-content-between align-items-center'>
@@ -92,6 +94,7 @@ export default function DetailsScreen() {
                         </Container>
                     </Col>
 
+                    {/* Pokemon details */}
                     <Col className='m-3 d-flex align-items-center justify-content-center'>
                         <div className='descriptions'>
                             <div className="d-flex desc" ><h4>Type: </h4> <span>{type}</span></div>
@@ -105,11 +108,8 @@ export default function DetailsScreen() {
 
                         </div>
                     </Col>
-
                 </Row>
             </Container>
         </div>
     )
-
-
 }

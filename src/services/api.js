@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// default Poke API call
+// default PokeAPI calls
 
 const pokeApi = axios.create({
     baseURL: 'https://pokeapi.co/api/v2'

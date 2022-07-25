@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap'
 function FavoritesScreen() {
     const [list, setList] = useState([])
 
+    // get the favorites list and prepare them to render avoiding empty cards in the list
     const getList = async () => {
         setList([])
 
