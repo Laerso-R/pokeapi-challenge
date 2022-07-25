@@ -1,5 +1,4 @@
-body {
-  margin: 0;
+body { 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -19,9 +18,18 @@ li {
 }
 
 .body {
-  background-color: #D9AFD9;
+  min-height: 100vh;
+  background-color: #97D9E1;
   background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+}
 
+.title {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.card {
+  min-height: 310px;
 }
 
 .steel {
@@ -83,4 +91,26 @@ li {
 
 .normal {
   background-color: #F5F5F5;
+}
+
+.card:hover {
+  animation: bounce 0.5s linear;
+}
+
+@keyframes bounce {
+  20% {
+    transform: translateY(-6px);
+  }
+
+  40% {
+    transform: translateY(0px);
+  }
+
+  80% {
+    transform: translateY(-2px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }

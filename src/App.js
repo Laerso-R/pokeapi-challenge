@@ -1,23 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import AppNavbar from './components/navbar/Navbar';
 import PokemonCard from './components/pokemonCard/PokemonCard';
-import { Container, Row, Button, Pagination, Col } from 'react-bootstrap'
+import { Container, Row, Pagination, Col } from 'react-bootstrap'
 import pokeApi from './services/api';
 
 
 function App() {
-  const [list, setList] = useState([])
+  const off = parseInt(localStorage.getItem('offset')) ?? 0
 
-  const getList = async (query) => {
-    pokeApi.get('/pokemon' + query)
+  const [list, setList] = useState([])
+  const [count, setCount] = useState()
+  const [offset, setOffset] = useState(off)
+
+
+
+  const getList = async () => {
+
+    pokeApi.get('/pokemon?limit=20&offset=' + offset)
       .then(response => {
         setList(response.data.results)
+        setCount(response.data.count)        
       })
+
+      localStorage.setItem('offset', offset)
   }
 
   useEffect(() => {
     getList()
-  }, [])
+  }, [offset])
 
   return (
     <div className='body'>
@@ -28,18 +38,13 @@ function App() {
       <Container className='p-3'>
         <Row className="justify-content-md-between" >
           <Col md='auto'>
-            <input
-              type='text'
-              placeholder='Search by name or id'
-            />
-            <Button variant='warning' className='m-1'>Search</Button>
           </Col>
           <Col md='auto'>
             <Pagination variant='warning'>
-              <Pagination.First />
-              <Pagination.Prev />
-              <Pagination.Next />
-              <Pagination.Last />
+              <Pagination.First onClick={() => setOffset(0)} />
+              <Pagination.Prev onClick={() => { if (offset >= 20) { setOffset(offset - 20) } }} />
+              <Pagination.Next onClick={() => { if (offset < count - 20) setOffset(offset + 20) }} />
+              <Pagination.Last onClick={() => setOffset(count - 20)} />
             </Pagination>
           </Col>
         </Row>

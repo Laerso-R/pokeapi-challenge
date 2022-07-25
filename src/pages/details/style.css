@@ -1,0 +1,51 @@
+.screen {
+    min-height: 100vh;
+    max-height: 200vh;
+    background-image: url('../../assets/pokeball.png');
+    background-repeat: no-repeat;
+    background-size: 1200px;
+    background-position: center;
+    background-blend-mode: soft-light;
+}
+
+h1 {
+    text-transform: capitalize;
+}
+
+.pokemon {
+    height: 100%;
+}
+
+.img {
+    width: 100%;
+}
+
+.descriptions {
+    padding: 30px;
+    min-width: 456px;
+    width: 80%;
+    border-radius: 20px;
+    background-color: #ffffff8a;
+}
+
+.desc {
+    margin: 10px;
+}
+
+h4 {
+    font-weight: bold;
+}
+
+span {
+    font-size: 22px;
+    text-transform: capitalize;
+    margin-left: 10px;
+}
+
+p {
+    font-size: 22px;
+}
+
+.back:hover{
+    cursor: pointer;
+}
