@@ -13,10 +13,8 @@ function App() {
   const [count, setCount] = useState()
   const [offset, setOffset] = useState(off)
 
-
   // lists the pokemons
   const getList = async () => {
-
     pokeApi.get('/pokemon?limit=20&offset=' + offset)
       .then(response => {
         setList(response.data.results)

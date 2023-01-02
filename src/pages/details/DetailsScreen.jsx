@@ -26,7 +26,7 @@ export default function DetailsScreen() {
                 getFavorite()
             })
     }
-
+    
     // checks if pokemon is one of the favorites
     const getFavorite = () => {
         let favorites = localStorage.getItem('favorites')
